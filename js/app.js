@@ -1,17 +1,23 @@
-// ajax(file name, ( results => {
 
-// ajax(file name.forEach( results => {
-//   new Constructor(results)
-//   }
-
-// WE need to fetch json using AJAX
-// Loop through json using forEach and arrow function
-// For each item in loop create instance of hornedAnimal
-// Find Target where we will drop the animal elements (getElbyID)
-// Loop through animalArray using forEach and arrow function
-// forEach animal in array render element and append to target
+/*DISPLAY IMAGES
+WE need to fetch json using AJAX
+Loop through json using forEach and arrow function
+For each item in loop create instance of hornedAnimal
+Find Target where we will drop the animal elements (getElbyID)
+Loop through animalArray using forEach and arrow function
+forEach animal in array render element and append to target
 
 
+TODO:// reconstitute by passing through constructor
+
+/* FILTER IMAGES STEPS:
+ Create an array with just keywords in json file (all of them) and assign to const/var named dropdown
+ Loop through the keywords using ForEach and for each of them add option to dropdown menu by creating element and appending it as child (this takes place after parsing of data before rendering animal)
+ If dropdown is a form, we can use document.forms to get value or any other way to get value
+ In the animalAray forEach function, before renderAnimal create an IF statement
+ If keyword === value of dropdown (which is set as var) then call render function and append the element*/
+
+const keywords = []; // add keywords into array
 const animalArray = [];
 function hornedAnimal(data) {
   // passed in entire object instead of individual params
@@ -21,14 +27,30 @@ function hornedAnimal(data) {
   this.keyword = data.keyword;
   this.horns = data.horns;
 }
+//Mustache
+const templateHtml = $('#pet-template').innerHTML;
+const newElement = Mustache.render(templateHTML, hornedAnimal);
 
-// We are generating html elements
+const renderMustacheAndJquery = (obj) => {
+  const template =$('#pet-template').html();
+  const newElement = Mustache.render(template, obj);
+  $('section').append(newElement);
+};
+renderMustacheAndJquery(hornedAnimal);
+
+// Generating html elements
+/*change all Vanilla JS to jQuery (document,getElementById and doc.Create etc.)*/
+
 hornedAnimal.prototype.renderElement = function() {
-  var section = document.createElement('section');
+  var section = $.create('section');
   // TODO:Add h2 if need be, look at html and project requirements
-  const img = document.createElement('img');
+  const h2Element = $.create('h2');
+  const img = $.create('img');
   img.src = this.image_url;
+  const pTag = $.create('p');
+  section.appendChild(h2);
   section.appendChild(img);
+  section.appendChild(p);
   return section;
 };
 
@@ -41,22 +63,16 @@ function fetchData() {
         const newAnimal = new hornedAnimal(animalData)
         animalArray.push(newAnimal);
       })
-      const main = document.getElementById('animal-home');
+      const article = $('#animal-home');
       animalArray.forEach(animal => {
         const renderAnimal = animal.renderElement();
-        main.appendChild(renderAnimal);
+        article.appendChild(renderAnimal);
       })
     })
 }
 fetchData();
 
-// first: fix AJAX issue and show TA ASAP
-/*second: To FILTER IMAGES: 
--create an array with just keywords in json file (all of them) and assign to const/var named dropdown
-- Loop through the keywords using ForEach and for each of them add option to dropdown menu by creating element and appending it as child (this takes place after parsing of data before rendering animal)
-- If dropdown is a form, we can use document.forms to get value or document.getlementbyId to get element
--In the animalAray forEach function, before renderAnimal create andif statement
-- If keyword === value of dropdown (which is set as var) then call render function and append the element
+
 
 
 
