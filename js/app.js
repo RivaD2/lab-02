@@ -10,7 +10,7 @@
 // Find Target where we will drop the animal elements (getElbyID)
 // Loop through animalArray using forEach and arrow function
 // forEach animal in array render element and append to target
-// For filtering 
+
 
 const animalArray = [];
 function hornedAnimal(data) {
@@ -50,6 +50,13 @@ function fetchData() {
 }
 fetchData();
 
+// first: fix AJAX issue and show TA ASAP
+/*second: To FILTER IMAGES: 
+-create an array with just keywords in json file (all of them) and assign to const/var named dropdown
+- Loop through the keywords using ForEach and for each of them add option to dropdown menu by creating element and appending it as child (this takes place after parsing of data before rendering animal)
+- If dropdown is a form, we can use document.forms to get value or document.getlementbyId to get element
+-In the animalAray forEach function, before renderAnimal create andif statement
+- If keyword === value of dropdown (which is set as var) then call render function and append the element
 
 
 
