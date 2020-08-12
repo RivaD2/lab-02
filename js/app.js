@@ -27,16 +27,16 @@ function hornedAnimal(data) {
   this.keyword = data.keyword;
   this.horns = data.horns;
 }
-//Mustache
-const templateHtml = $('#pet-template').innerHTML;
-const newElement = Mustache.render(templateHTML, hornedAnimal);
+//Mustache // how do we use keys in html if we passed in the entire object on constructor
+// const templateHtml = $('#pet-template').innerHTML;
+// const newElement = Mustache.render(templateHTML, hornedAnimal);
 
-const renderMustacheAndJquery = (obj) => {
-  const template =$('#pet-template').html();
-  const newElement = Mustache.render(template, obj);
-  $('section').append(newElement);
-};
-renderMustacheAndJquery(hornedAnimal);
+// const renderMustacheAndJquery = (obj) => {
+//   const template =$('#pet-template').html();
+//   const newElement = Mustache.render(template, obj);
+//   $('section').append(newElement);
+// };
+// renderMustacheAndJquery(hornedAnimal);
 
 // Generating html elements
 /*change all Vanilla JS to jQuery (document,getElementById and doc.Create etc.)*/
@@ -44,13 +44,13 @@ renderMustacheAndJquery(hornedAnimal);
 hornedAnimal.prototype.renderElement = function() {
   var section = $.create('section');
   // TODO:Add h2 if need be, look at html and project requirements
-  const h2Element = $.create('h2');
+  const title = $.create('h2');
   const img = $.create('img');
   img.src = this.image_url;
-  const pTag = $.create('p');
-  section.appendChild(h2);
+  const description = $.create('p');
+  section.appendChild(title);
   section.appendChild(img);
-  section.appendChild(p);
+  section.appendChild(description);
   return section;
 };
 
