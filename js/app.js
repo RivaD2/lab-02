@@ -28,6 +28,8 @@ function hornedAnimal(data) {
   this.horns = data.horns;
 }
 //Mustache // how do we use keys in html if we passed in the entire object on constructor
+// make button in html and use jQuery hide to show the second set of animals when it is clicked
+//make new button for html for other part of button challenge in class requirements
 // const templateHtml = $('#pet-template').innerHTML;
 // const newElement = Mustache.render(templateHTML, hornedAnimal);
 
@@ -42,12 +44,12 @@ function hornedAnimal(data) {
 /*change all Vanilla JS to jQuery (document,getElementById and doc.Create etc.)*/
 
 hornedAnimal.prototype.renderElement = function() {
-  var section = $.create('section');
+  var section = $('article').html('section');
   // TODO:Add h2 if need be, look at html and project requirements
-  const title = $.create('h2');
-  const img = $.create('img');
+  const title = $('section').html('h2');
+  const img = $('section').html('img');
   img.src = this.image_url;
-  const description = $.create('p');
+  const description = $('section').html('p');
   section.appendChild(title);
   section.appendChild(img);
   section.appendChild(description);
