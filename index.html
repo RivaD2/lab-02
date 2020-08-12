@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script id="pet-template" type= "text/x-tmpl-mustache">
+    <article id="animal-home">
+      <section id="photo-template">
+        <h2></h2>
+        <img src= {{image_url}}>
+        <p></p>
+      </section>
+    </article>
+  </script>
   <title>Document</title>
 </head>
 <body>
@@ -22,16 +31,18 @@
       <option value="default">Filter by Keyword</option>
     </select>
   </header>
-  <main id="animal-home">
+  
+  <article id="animal-home">
     <section id="photo-template">
       <h2></h2>
       <img src="" alt="">
       <p></p>
     </section>
-  </main>
+  </article>
   <footer>
     © 2018 Code Fellows
   </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="js/app.js"></script>
 </body>
