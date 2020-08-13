@@ -18,7 +18,16 @@ TODO:// reconstitute by passing through constructor
  If keyword === value of dropdown (which is set as var) then call render function and append the element*/
 //Dont't forget to clear out old items // would have to clear all out
 
+//LAB 03
+TODO: //create event handler and have the event handler  respond when the user chooses an option from the select menu. Hide all of the images, then show those whose keyword matches the option chosen
 
+TODO:// Add the ability for the user to sort the images by either title or by number of horns.
+TODO: //Add navigation for the user to switch between two pages. Each page should render a unique set of images from one of the two provided JSON files.
+TODO://Reset the filters, then repopulate them using only keywords from the images currently being displayed.
+TODO: //Create the appropriate Mustache template in your HTML with the same <h2>, <img>, and <p> elements as the jQuery template from the prior lab.
+TODO: //Refactor the method that renders your images to use Mustache instead of making a copy with jQuery.
+TODO://Add the ability for the user to sort the images by either title or by number of horns.
+TODO://Sort the images by one of the properties on page load. This should also apply to the second page of images.
 
 const dropdown = []; // add keywords into array
 const animalArray = [];
@@ -32,9 +41,10 @@ function hornedAnimal(data) {
 }
 
 
-//Mustache // how do we use keys in html if we passed in the entire object on constructor
-//// make button in html and use jQuery hide to show the second set of animals when it is clicked
-//make new button for html for other part of button challenge in class requirements
+
+//TODO:make button in html and use jQuery hide to show the second set of animals when it is clicked
+//TODO:make new button for html for other part of button challenge in class requirements
+
 // const templateHtml = $('#pet-template').innerHTML;
 // const newElement = Mustache.render(templateHTML, hornedAnimal);
 
