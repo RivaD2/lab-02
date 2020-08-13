@@ -13,11 +13,11 @@ TODO:// reconstitute by passing through constructor
 /* FILTER IMAGES STEPS:
  Create an array with just keywords in json file (all of them) and assign to const/var named dropdown
  Loop through the keywords using ForEach and for each of them add option to dropdown menu by creating element and appending it as child (this takes place after parsing of data before rendering animal)
- If dropdown is a form, we can use document.forms to get value or any other way to get value
+ Use jQuery get ID formatting or any other way to get value
  In the animalAray forEach function, before renderAnimal create an IF statement
  If keyword === value of dropdown (which is set as var) then call render function and append the element*/
-
-const keywords = []; // add keywords into array
+ //Dont't forget to clear out old items // would have to clear all out
+const dropdown = []; // add keywords into array
 const animalArray = [];
 function hornedAnimal(data) {
   // passed in entire object instead of individual params
@@ -28,33 +28,32 @@ function hornedAnimal(data) {
   this.horns = data.horns;
 }
 //Mustache // how do we use keys in html if we passed in the entire object on constructor
-// make button in html and use jQuery hide to show the second set of animals when it is clicked
+//// make button in html and use jQuery hide to show the second set of animals when it is clicked
 //make new button for html for other part of button challenge in class requirements
 // const templateHtml = $('#pet-template').innerHTML;
 // const newElement = Mustache.render(templateHTML, hornedAnimal);
 
 // const renderMustacheAndJquery = (obj) => {
-//   const template =$('#pet-template').html();
-//   const newElement = Mustache.render(template, obj);
-//   $('section').append(newElement);
+// const template =$('#pet-template').html();
+// const newElement = Mustache.render(template, obj);
+// $('section').append(newElement);
 // };
 // renderMustacheAndJquery(hornedAnimal);
 
-// Generating html elements
-/*change all Vanilla JS to jQuery (document,getElementById and doc.Create etc.)*/
+//Generating html elements
+
 
 hornedAnimal.prototype.renderElement = function() {
-  var section = $('article').html('section');
-  // TODO:Add h2 if need be, look at html and project requirements
-  const title = $('section').html('h2');
-  const img = $('section').html('img');
-  img.src = this.image_url;
-  const description = $('section').html('p');
-  section.appendChild(title);
-  section.appendChild(img);
-  section.appendChild(description);
+  let section = $('#photo-template').clone();
+  section.find('h2').text(this.title);
+  section.find('img').attr('src',this.image_url);
+  section.find('p').text(this.description);
+
   return section;
 };
+
+
+
 
 // making a call to ajax using jQuery to get data
 function fetchData() {
@@ -63,16 +62,25 @@ function fetchData() {
       console.log(data);
       data.forEach(animalData => {
         const newAnimal = new hornedAnimal(animalData)
+        dropdown.forEach (function(image_url) {
+          if(!dropdown.includes(newAnimal.keyword)) {
+            dropdown.push(newAnimal.keyword);
+            let options =$('#keyword').clone();
+          }
+        })
         animalArray.push(newAnimal);
       })
-      const article = $('#animal-home');
+      console.log(animalArray);
+      const article = $('#all-animals');
       animalArray.forEach(animal => {
         const renderAnimal = animal.renderElement();
-        article.appendChild(renderAnimal);
+        console.log(renderAnimal);
+        article.append(renderAnimal);
       })
     })
 }
 fetchData();
+
 
 
 
