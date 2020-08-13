@@ -18,17 +18,17 @@ TODO:// reconstitute by passing through constructor
  If keyword === value of dropdown (which is set as var) then call render function and append the element*/
 //Dont't forget to clear out old items // would have to clear all out
 
-//LAB 03
-TODO: //create event handler and have the event handler  respond when the user chooses an option from the select menu. Hide all of the images, then show those whose keyword matches the option chosen
+// //LAB 03
+// TODO: //create event handler and have the event handler  respond when the user chooses an option from the select menu. Hide all of the images, then show those whose keyword matches the option chosen
 
-TODO:// Add the ability for the user to sort the images by either title or by number of horns.
-TODO: //Add navigation for the user to switch between two pages. Each page should render a unique set of images from one of the two provided JSON files.
-TODO://Reset the filters, then repopulate them using only keywords from the images currently being displayed.
-TODO: //Create the appropriate Mustache template in your HTML with the same <h2>, <img>, and <p> elements as the jQuery template from the prior lab.
-TODO: //Refactor the method that renders your images to use Mustache instead of making a copy with jQuery.
-TODO://Add the ability for the user to sort the images by either title or by number of horns.
-TODO://Sort the images by one of the properties on page load. This should also apply to the second page of images.
-
+// TODO:// Add the ability for the user to sort the images by either title or by number of horns.
+// TODO: //Add navigation for the user to switch between two pages. Each page should render a unique set of images from one of the two provided JSON files.
+// TODO://Reset the filters, then repopulate them using only keywords from the images currently being displayed.
+// TODO: //Create the appropriate Mustache template in your HTML with the same <h2>, <img>, and <p> elements as the jQuery template from the prior lab.
+// TODO: //Refactor the method that renders your images to use Mustache instead of making a copy with jQuery.
+// TODO://Add the ability for the user to sort the images by either title or by number of horns.
+// TODO://Sort the images by one of the properties on page load. This should also apply to the second page of images.
+let allImages =[];
 const dropdown = []; // add keywords into array
 const animalArray = [];
 function hornedAnimal(data) {
@@ -87,7 +87,7 @@ function fetchData() {
       })
       console.log(animalArray);
       const article = $('#all-animals');
-      animalArray.forEach(animal => {
+      animalArray.forEach(animal => {  ////$('section: nth-child(2)').empty(); add this here to empty out images
         const renderAnimal = animal.renderElement();
         console.log(renderAnimal);
         article.append(renderAnimal);
@@ -97,8 +97,34 @@ function fetchData() {
 fetchData();
 
 
+// const passToConstructor = resultDataArray => {
+// allImages = [];
+//   restultDataArray.forEach (valueDataObject => {
+//     new Image (valueDataObject);
+//   })
+// }
 
+// sorting
 
+function sortImages(key) {
+  animalArray.sort((a, b) => {
+    if(a[key] > b[key]) {
+      return 1;
+    } else if (a[key] < b[key]) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  $('section: nth-child(2)').empty();
+  _renderAnimal();
+}
+
+// $('all-animals').on('click', 'button', function () {
+//   sortImages($(this).attr('id'));
+// });
+
+//
 
 
 
