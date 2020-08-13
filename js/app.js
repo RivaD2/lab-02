@@ -16,7 +16,10 @@ TODO:// reconstitute by passing through constructor
  Use jQuery get ID formatting or any other way to get value
  In the animalAray forEach function, before renderAnimal create an IF statement
  If keyword === value of dropdown (which is set as var) then call render function and append the element*/
- //Dont't forget to clear out old items // would have to clear all out
+//Dont't forget to clear out old items // would have to clear all out
+
+
+
 const dropdown = []; // add keywords into array
 const animalArray = [];
 function hornedAnimal(data) {
@@ -27,6 +30,8 @@ function hornedAnimal(data) {
   this.keyword = data.keyword;
   this.horns = data.horns;
 }
+
+
 //Mustache // how do we use keys in html if we passed in the entire object on constructor
 //// make button in html and use jQuery hide to show the second set of animals when it is clicked
 //make new button for html for other part of button challenge in class requirements
@@ -49,10 +54,10 @@ hornedAnimal.prototype.renderElement = function() {
   section.find('img').attr('src',this.image_url);
   section.find('p').text(this.description);
 
+
+
   return section;
 };
-
-
 
 
 // making a call to ajax using jQuery to get data
@@ -62,12 +67,12 @@ function fetchData() {
       console.log(data);
       data.forEach(animalData => {
         const newAnimal = new hornedAnimal(animalData)
-        dropdown.forEach (function(image_url) {
-          if(!dropdown.includes(newAnimal.keyword)) {
-            dropdown.push(newAnimal.keyword);
-            let options =$('#keyword').clone();
-          }
-        })
+        if(!dropdown.includes(newAnimal.keyword)) {
+          dropdown.push(newAnimal.keyword);
+          let options =$('#keyword').clone();
+          options.attr('value', animalData.keyword).text(animalData.keyword);
+          $('#dropdown-menu').append(options);
+        }
         animalArray.push(newAnimal);
       })
       console.log(animalArray);
