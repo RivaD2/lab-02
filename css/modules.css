@@ -3,3 +3,13 @@ img {
   border-radius: 20%;
   border: 2px solid black;
 }
+p {
+  font-family: 'Pangolin', cursive;
+  font-size: 15px;
+
+}
+h2 {
+  font-family: 'Pangolin', cursive;
+  font-style: bold;
+  font-size: 30px;
+}

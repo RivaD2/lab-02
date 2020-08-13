@@ -119,7 +119,7 @@ function sortImages(key) {
   $('section: nth-child(2)').empty();
   _renderAnimal();
 }
-
+sortImages();
 // $('all-animals').on('click', 'button', function () {
 //   sortImages($(this).attr('id'));
 // });
